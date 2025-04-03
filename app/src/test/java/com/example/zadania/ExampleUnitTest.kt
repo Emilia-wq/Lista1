@@ -1,14 +1,19 @@
 package com.example.zadania
 
 import Heron
+import wspolne
 import org.junit.Test
 
 import org.junit.Assert.*
+import podzbiory
 
 /**
  *@author Emilia Romanowska
  */
 class ExampleUnitTest {
+
+    //Zadanie 1
+
     @Test
     fun heron_isCorrect() {
         //given
@@ -71,5 +76,35 @@ class ExampleUnitTest {
         } catch (e: Exception) {
             assertEquals(1, 1) //Test przeszedł
         }
+    }
+
+    //Zadanie 2
+
+    @Test
+    fun wspolneisCorrect() {
+
+        //given
+        val multiZbiorX1 = listOf(1, 2, 3, 4, 5, 6, 7)
+        val multiZbiorY1 = listOf(1, 3, 5, 7, 9, 11, 13)
+
+        //when
+        val czescWspolna1 = wspolne(multiZbiorX1, multiZbiorY1)
+
+        //then
+        assertEquals(listOf(1,3,5,7),czescWspolna1)
+    }
+
+    //Zadanie 3
+    @Test
+    fun podzbioryCorrect() {
+
+        //given
+        val zbior1 = listOf(1, 2, 3)
+
+        //when
+        val podzbioryWynik = podzbiory(zbior1)
+
+        //then
+        assertEquals(6,podzbioryWynik.size)
     }
 }
