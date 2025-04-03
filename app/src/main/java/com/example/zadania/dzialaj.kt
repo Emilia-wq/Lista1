@@ -1,16 +1,16 @@
 import kotlin.math.sqrt
 
+//Zadanie 1
 /**
  *@author Emilia Romanowska
  */
 /**
- *@param a - bok trójkąta
- * @param b - bok trójkąta
- * @param c - bok trójkąta
- * @return double
+ * @param a - Double
+ * @param b - Double
+ * @param c - Double
+ * @return Double
  */
-
-fun Heron(a: Double, b: Double, c: Double): Double {
+fun heron(a: Double, b: Double, c: Double): Double {
     if (a <= 0) {
         throw Exception("Boki trojkata musza miec wartosc > od 0")
     } else if (b <= 0) {
@@ -18,7 +18,6 @@ fun Heron(a: Double, b: Double, c: Double): Double {
     } else if (c <= 0) {
         throw Exception("Boki trojkata musza miec wartosc > od 0")
     }
-
     if (a >= b + c) {
         throw Exception("Dwa boki trojkata musza być wieksze niz trzeci bok")
     } else if (b >= a + c) {
@@ -26,7 +25,6 @@ fun Heron(a: Double, b: Double, c: Double): Double {
     } else if (c >= a + b) {
         throw Exception("Dwa boki trojkata musza być wieksze niz trzeci bok")
     }
-
     val p = (a + b + c) / 2
 
     return sqrt(p * (p - a) * (p - b) * (p - c))
@@ -34,19 +32,17 @@ fun Heron(a: Double, b: Double, c: Double): Double {
 
 //Zadanie 2
 /**
- *@param multiZbiorX - List
+ * @param multiZbiorX - List
  * @param multiZbiorY - List
  * @return List
  */
-
 fun wspolne(multiZbiorX: List<Int>, multiZbiorY: List<Int>): List<Int> {
     return multiZbiorX.intersect(multiZbiorY).toList()
 }
 
 //Zadanie 3
-
 /**
- *@param n - List<Int>
+ * @param n - List<Int>
  * @return ArrayList<List<Int>>
  */
 fun podzbiory(n: List<Int>): ArrayList<List<Int>> {
@@ -67,7 +63,7 @@ fun podzbiory(n: List<Int>): ArrayList<List<Int>> {
 
 //a
 /**
- *@param n - Int
+ * @param n - Int
  * @return List<Int>
  */
 fun ciagFibonacci(n: Int): List<Int> {
@@ -75,7 +71,8 @@ fun ciagFibonacci(n: Int): List<Int> {
         throw Exception("Liczba elementow n musi byc > 0")
     }
     var pierwszaLiczba = 0
-    val listaFib = mutableListOf(pierwszaLiczba)
+    val listaFib = ArrayList<Int>()
+    listaFib.add(pierwszaLiczba)
 
     var drugaLiczba = 1
     listaFib.add(drugaLiczba)
@@ -93,7 +90,7 @@ fun ciagFibonacci(n: Int): List<Int> {
 
 //b
 /**
- *@param n - Int
+ * @param n - Int
  * @return Int
  */
 fun ciagFibonacciego(n: Int): Int {
@@ -107,7 +104,7 @@ fun ciagFibonacciego(n: Int): Int {
 }
 
 /**
- *@param n - Int
+ * @param n - Int
  * @return List<Int>
  */
 fun ciagFibonacciego2(n: Int): List<Int> {
@@ -123,7 +120,7 @@ fun ciagFibonacciego2(n: Int): List<Int> {
 
 //Zadanie 5
 /**
- *@param c0 - Int
+ * @param c0 - Int
  * @return List<Int>
  */
 fun collatz(c0: Int): List<Int> {
@@ -148,17 +145,17 @@ fun collatz(c0: Int): List<Int> {
 //Zadanie 6
 //a)
 /**
- *@param sekwencja - String
+ * @param sekwencja - String
  * @return String
  */
 fun komplement(sekwencja: String): String {
     val mapaKomp = mapOf('A' to 'T', 'T' to 'A', 'C' to 'G', 'G' to 'C')
-    val wynik = StringBuilder()
+    var wynik = ""
 
     for (zasada in sekwencja) {
         val nicKomplementarna = mapaKomp[zasada]
         if (nicKomplementarna != null) {
-            wynik.append(nicKomplementarna)
+            wynik += nicKomplementarna
         } else {
             throw Exception("Zasada jest nieprawidłowa = $zasada")
         }
@@ -167,24 +164,23 @@ fun komplement(sekwencja: String): String {
 }
 //b)
 /**
- *@param nicMatrycowa - String
+ * @param nicMatrycowa - String
  * @return String
  */
 fun transkrybuj(nicMatrycowa: String): String {
-    val wynik = StringBuilder()
+    var wynik = ""
 
     for (zasada in nicMatrycowa) {
         when (zasada) {
-            'A' -> wynik.append('U')
-            'T' -> wynik.append('A')
-            'C' -> wynik.append('G')
-            'G' -> wynik.append('C')
+            'A' -> wynik += 'U'
+            'T' -> wynik += 'A'
+            'C' -> wynik += 'G'
+            'G' -> wynik += 'C'
             else -> throw Exception("Zasada jest nieprawidłowa = $zasada")
         }
     }
     return wynik.toString()
 }
-
 
 fun main() {
     //Zadanie 1
@@ -193,41 +189,38 @@ fun main() {
         val bokB1 = 4.0
         val bokC1 = 5.0
 
-        val poleTrojkata1 = Heron(bokA1, bokB1, bokC1)
+        val poleTrojkata1 = heron(bokA1, bokB1, bokC1)
         println("Pole trojkata wynosi $poleTrojkata1")
     } catch (e: Exception) {
-        println("Wystapil blad $e")
+        println("${e.message}")
     }
     try {
         val bokA2 = 12.0
         val bokB2 = 12.0
         val bokC2 = 12.0
 
-        val poleTrojkata2 = Heron(bokA2, bokB2, bokC2)
+        val poleTrojkata2 = heron(bokA2, bokB2, bokC2)
         println("Trojkat rownoboczny o polu = $poleTrojkata2")
     } catch (e: Exception) {
-        println("Wystapil blad $e")
+        println("${e.message}")
     }
     try {
         val bokA3 = 0.0
         val bokB3 = 13.0
         val bokC3 = 14.0
 
-        val poleTrojkata3 = Heron(bokA3, bokB3, bokC3)
-        println("Bledne dane, bok trojkata nie moze = 0 ")
+        val poleTrojkata3 = heron(bokA3, bokB3, bokC3)
     } catch (e: Exception) {
-        println("Wystapil blad $e")
+        println("${e.message}")
     }
     try {
         val bokA4 = 1.0
         val bokB4 = 13.0
         val bokC4 = 14.0
 
-        val poleTrojkata4 = Heron(bokA4, bokB4, bokC4)
-        println("Bledne dane, dwa boki trojkata musza byc wieksze niz trzeci bok ")
+        val poleTrojkata4 = heron(bokA4, bokB4, bokC4)
     } catch (e: Exception) {
-        println("Wystapil blad $e")
-
+        println("${e.message}")
     }
 
     //Zadanie 2
@@ -257,16 +250,14 @@ fun main() {
     val czescWspolna5 = wspolne(multiZbiorX5, multiZbiorY5)
     println("Dla multiZbioru X5 = $multiZbiorX5 i multiZbioru Y5 = $multiZbiorY5 czescWspolna = $czescWspolna5 ")
 
-
     //Zadanie 3
     val zbior1 = listOf(1, 2, 3)
     val podzbioryWynik = podzbiory(zbior1)
     println("Wynik dla podzbiorow = $podzbioryWynik")
 
+    //Zadanie 4
+    //a)
 
-//Zadanie 4
-
-//a)
     val ciagFibonacci1 = ciagFibonacci(6)
     println("$ciagFibonacci1")
 
@@ -312,7 +303,7 @@ fun main() {
     val dlugosc = ciag.size
     println("Dlugosc ciagu przed wpadnieciem w cykl = $dlugosc")
 
-//Zadanie 6
+    //Zadanie 6
 
     val sekwencjaKodujaca = "ATCCGCTATGAC"
     println("Sekwencja nici kodujacej = $sekwencjaKodujaca")

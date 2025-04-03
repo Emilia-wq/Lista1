@@ -1,6 +1,6 @@
 package com.example.zadania
 
-import Heron
+import heron
 import ciagFibonacci
 import ciagFibonacciego2
 import collatz
@@ -27,7 +27,7 @@ class ExampleUnitTest {
         val bokC1 = 5.0
 
         //when
-        val poleTrojkata1 = Heron(bokA1, bokB1, bokC1)
+        val poleTrojkata1 = heron(bokA1, bokB1, bokC1)
 
         //then
         assertEquals(6.0, poleTrojkata1, 0.0)
@@ -41,7 +41,7 @@ class ExampleUnitTest {
         val bokC1 = 12.0
 
         //when
-        val poleTrojkata2 = Heron(bokA1, bokB1, bokC1)
+        val poleTrojkata2 = heron(bokA1, bokB1, bokC1)
 
         //then
         assertEquals(62.353829072479584, poleTrojkata2, 0.0)
@@ -56,8 +56,9 @@ class ExampleUnitTest {
 
         //when
         try {
-            val poleTrojkata3 = Heron(bokA1, bokB1, bokC1)
-            //then
+            val poleTrojkata3 = heron(bokA1, bokB1, bokC1)
+
+        //then
             assertEquals(1, 2) //Zawsze fail
 
         } catch (e: Exception) {
@@ -74,8 +75,9 @@ class ExampleUnitTest {
 
         //when
         try {
-            val poleTrojkata3 = Heron(bokA1, bokB1, bokC1)
-            //then
+            val poleTrojkata3 = heron(bokA1, bokB1, bokC1)
+
+        //then
             assertEquals(1, 2) //Zawsze fail
 
         } catch (e: Exception) {
@@ -118,8 +120,11 @@ class ExampleUnitTest {
     @Test
     fun ciagFiboCorrect() {
 
+        //given
+        val cyfra = 6
+
         //when
-        val ciagFibonacci1 = ciagFibonacci(6)
+        val ciagFibonacci1 = ciagFibonacci(cyfra)
 
         //then
         assertEquals(listOf(0, 1, 1, 2, 3, 5), ciagFibonacci1)
@@ -128,11 +133,14 @@ class ExampleUnitTest {
     @Test
     fun ciagFiboinCorrect1() {
 
+        //given
+        val cyfra = 0
 
         //when
         try {
-            val ciagFibonacci1 = ciagFibonacci(0)
-            //then
+            val ciagFibonacci1 = ciagFibonacci(cyfra)
+
+        //then
             assertEquals(1, 2) //Zawsze fail
 
         } catch (e: Exception) {
@@ -143,22 +151,29 @@ class ExampleUnitTest {
     @Test
     fun ciagFiboinCorrect2() {
 
+        //given
+        var cyfra = -23
+
         //when
         try {
-            val ciagFibonacci1 = ciagFibonacci(-23)
-            //then
+            val ciagFibonacci1 = ciagFibonacci(cyfra)
+        //then
             assertEquals(1, 2) //Zawsze fail
 
         } catch (e: Exception) {
             assertEquals(1, 1) //Test przeszedł
         }
     }
+
 //b
 @Test
 fun ciagFiboCorrectrek() {
 
+    //given
+    var cyfra = 6
+
     //when
-    val ciagFibonacci1 = ciagFibonacciego2(6)
+    val ciagFibonacci1 = ciagFibonacciego2(cyfra)
 
     //then
     assertEquals(listOf(0, 1, 1, 2, 3, 5), ciagFibonacci1)
@@ -167,9 +182,12 @@ fun ciagFiboCorrectrek() {
     @Test
     fun ciagFiboinCorrect1rek() {
 
+        //given
+        var cyfra = 0
+
         //when
         try {
-            val ciagFibonacci1 = ciagFibonacciego2(0)
+            val ciagFibonacci1 = ciagFibonacciego2(cyfra)
             //then
             assertEquals(1, 2) //Zawsze fail
 
@@ -181,9 +199,12 @@ fun ciagFiboCorrectrek() {
     @Test
     fun ciagFiboinCorrect2rek() {
 
+        //given
+        var cyfra = -23
+
         //when
         try {
-            val ciagFibonacci1 = ciagFibonacciego2(-23)
+            val ciagFibonacci1 = ciagFibonacciego2(cyfra)
             //then
             assertEquals(1, 2) //Zawsze fail
 
