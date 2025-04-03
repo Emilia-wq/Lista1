@@ -1,5 +1,12 @@
 import kotlin.math.sqrt
 
+/**
+*@param a - bok trójkąta
+ * @param b - bok trójkąta
+ * @param c - bok trójkąta
+ * @return double
+*/
+
 fun Heron (a:Double, b:Double, c:Double): Double {
     if (a <= 0){
         throw Exception ("Boki trojkata musza miec wartosc > od 0")
@@ -70,6 +77,6 @@ fun main (){
     }
     catch (e: Exception){
         println("Wystapil blad $e")
-        
+
     }
 }
