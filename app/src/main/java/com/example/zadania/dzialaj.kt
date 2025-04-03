@@ -32,11 +32,23 @@ fun Heron(a: Double, b: Double, c: Double): Double {
     return sqrt(p * (p - a) * (p - b) * (p - c))
 }
 
-//Zadanie 3
+//Zadanie 2
+/**
+ *@param multiZbiorX - List
+ * @param multiZbiorY - List
+ * @return List
+ */
+
 fun wspolne(multiZbiorX: List<Int>, multiZbiorY: List<Int>): List<Int> {
     return multiZbiorX.intersect(multiZbiorY).toList()
 }
 
+//Zadanie 3
+
+/**
+ *@param n - List<Int>
+ * @return ArrayList<List<Int>>
+ */
 fun podzbiory(n: List<Int>): ArrayList<List<Int>> {
 
     val wyniki = ArrayList<List<Int>>()
@@ -51,10 +63,13 @@ fun podzbiory(n: List<Int>): ArrayList<List<Int>> {
     return wyniki
 }
 
-//Zadanie 4
+//Zadanie 3
 
 //a
-
+/**
+ *@param n - Int
+ * @return List<Int>
+ */
 fun ciagFibonacci(n: Int): List<Int> {
     if (n <= 0) {
         throw Exception("Liczba elementow n musi byc > 0")
@@ -77,7 +92,10 @@ fun ciagFibonacci(n: Int): List<Int> {
 }
 
 //b
-
+/**
+ *@param n - Int
+ * @return Int
+ */
 fun ciagFibonacciego(n: Int): Int {
     if (n == 0) {
         return 0
@@ -88,6 +106,10 @@ fun ciagFibonacciego(n: Int): Int {
     }
 }
 
+/**
+ *@param n - Int
+ * @return List<Int>
+ */
 fun ciagFibonacciego2(n: Int): List<Int> {
     if (n <= 0) {
         throw Exception("Liczba elementow n musi byc > 0")
@@ -100,7 +122,10 @@ fun ciagFibonacciego2(n: Int): List<Int> {
 }
 
 //Zadanie 5
-
+/**
+ *@param c0 - Int
+ * @return List<Int>
+ */
 fun collatz(c0: Int): List<Int> {
     if (c0 <= 0) throw Exception("c0 ma byc liczba naturalna > 0")
 
@@ -118,6 +143,46 @@ fun collatz(c0: Int): List<Int> {
     }
     ciagCol.add(1)
     return ciagCol
+}
+
+//Zadanie 6
+//a)
+/**
+ *@param sekwencja - String
+ * @return String
+ */
+fun komplement(sekwencja: String): String {
+    val mapaKomp = mapOf('A' to 'T', 'T' to 'A', 'C' to 'G', 'G' to 'C')
+    val wynik = StringBuilder()
+
+    for (zasada in sekwencja) {
+        val nicKomplementarna = mapaKomp[zasada]
+        if (nicKomplementarna != null) {
+            wynik.append(nicKomplementarna)
+        } else {
+            throw Exception("Zasada jest nieprawidłowa = $zasada")
+        }
+    }
+    return wynik.toString()
+}
+//b)
+/**
+ *@param nicMatrycowa - String
+ * @return String
+ */
+fun transkrybuj(nicMatrycowa: String): String {
+    val wynik = StringBuilder()
+
+    for (zasada in nicMatrycowa) {
+        when (zasada) {
+            'A' -> wynik.append('U')
+            'T' -> wynik.append('A')
+            'C' -> wynik.append('G')
+            'G' -> wynik.append('C')
+            else -> throw Exception("Zasada jest nieprawidłowa = $zasada")
+        }
+    }
+    return wynik.toString()
 }
 
 
@@ -237,7 +302,6 @@ fun main() {
 
     //Zadanie 5
 
-
     val c0 = 4
     val ciag = collatz(c0)
     println("Ciag Collatza dla c0 = $c0: $ciag")
@@ -247,6 +311,15 @@ fun main() {
 
     val dlugosc = ciag.size
     println("Dlugosc ciagu przed wpadnieciem w cykl = $dlugosc")
+
+//Zadanie 6
+
+    val sekwencjaKodujaca = "ATCCGCTATGAC"
+    println("Sekwencja nici kodujacej = $sekwencjaKodujaca")
+
+    val sekwencjaMatrycowa = komplement(sekwencjaKodujaca)
+    println("Sekwencja nici matrycowej = $sekwencjaMatrycowa")
+
+    val sekwencjaRNA = transkrybuj(sekwencjaMatrycowa)
+    println("Sekwencja RNA= $sekwencjaRNA")
 }
-
-

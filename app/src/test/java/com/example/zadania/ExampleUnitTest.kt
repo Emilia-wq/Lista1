@@ -3,7 +3,10 @@ package com.example.zadania
 import Heron
 import ciagFibonacci
 import ciagFibonacciego2
+import collatz
 import wspolne
+import komplement
+import transkrybuj
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -189,4 +192,37 @@ fun ciagFiboCorrectrek() {
         }
     }
 
+    //Zadanie 5
+
+    @Test
+
+    fun ciagCollCorrect (){
+
+        //given
+        val c0 = 4
+
+        //when
+        val ciag = collatz(c0)
+
+        //then
+        assertEquals(listOf(4,2,1),ciag)
+    }
+
+    //Zadanie 6
+
+    @Test
+
+    fun transkrypcja_komplementCorrect (){
+
+        //given
+        val sekwencjaKodujaca = "ATCCGCTATGAC"
+
+        //when
+        val sekwencjaMatrycowa = komplement(sekwencjaKodujaca)
+        val sekwencjaRNA = transkrybuj(sekwencjaMatrycowa)
+
+        //then
+        assertEquals("TAGGCGATACTG", sekwencjaMatrycowa)
+        assertEquals("AUCCGCUAUGAC", sekwencjaRNA)
+    }
 }
