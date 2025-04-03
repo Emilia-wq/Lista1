@@ -188,5 +188,5 @@ fun ciagFiboCorrectrek() {
             assertEquals(1, 1) //Test przeszedł
         }
     }
-    
+
 }

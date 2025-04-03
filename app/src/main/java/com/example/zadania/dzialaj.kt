@@ -36,7 +36,8 @@ fun Heron(a: Double, b: Double, c: Double): Double {
 fun wspolne(multiZbiorX: List<Int>, multiZbiorY: List<Int>): List<Int> {
     return multiZbiorX.intersect(multiZbiorY).toList()
 }
-fun podzbiory(n: List<Int>) :ArrayList<List<Int>> {
+
+fun podzbiory(n: List<Int>): ArrayList<List<Int>> {
 
     val wyniki = ArrayList<List<Int>>()
 
@@ -54,9 +55,9 @@ fun podzbiory(n: List<Int>) :ArrayList<List<Int>> {
 
 //a
 
-fun ciagFibonacci (n : Int): List<Int>{
-    if (n <= 0){
-        throw Exception ("Liczba elementow n musi byc > 0")
+fun ciagFibonacci(n: Int): List<Int> {
+    if (n <= 0) {
+        throw Exception("Liczba elementow n musi byc > 0")
     }
     var pierwszaLiczba = 0
     val listaFib = mutableListOf(pierwszaLiczba)
@@ -64,7 +65,7 @@ fun ciagFibonacci (n : Int): List<Int>{
     var drugaLiczba = 1
     listaFib.add(drugaLiczba)
 
-    for(i in 1 .. n-2){
+    for (i in 1..n - 2) {
         val nastepneLiczby = pierwszaLiczba + drugaLiczba
 
         listaFib.add(nastepneLiczby)
@@ -77,28 +78,47 @@ fun ciagFibonacci (n : Int): List<Int>{
 
 //b
 
-fun ciagFibonacciego (n :Int): Int{
-    if (n == 0){
+fun ciagFibonacciego(n: Int): Int {
+    if (n == 0) {
         return 0
-    }
-    else if (n == 1){
+    } else if (n == 1) {
         return 1
-    }
-    else{
+    } else {
         return ciagFibonacciego(n - 1) + ciagFibonacciego(n - 2)
     }
 }
-fun ciagFibonacciego2 (n:Int): List<Int>{
-    if (n <= 0){
-        throw Exception ("Liczba elementow n musi byc > 0")
+
+fun ciagFibonacciego2(n: Int): List<Int> {
+    if (n <= 0) {
+        throw Exception("Liczba elementow n musi byc > 0")
     }
     var wynik = ArrayList<Int>()
-    for (i in 0..n-1){
+    for (i in 0..n - 1) {
         wynik.add(ciagFibonacciego(i))
     }
     return wynik
 }
 
+//Zadanie 5
+
+fun collatz(c0: Int): List<Int> {
+    if (c0 <= 0) throw Exception("c0 ma byc liczba naturalna > 0")
+
+    val ciagCol = ArrayList<Int>()
+    var c = c0
+
+    while (c != 1) {
+        ciagCol.add(c)
+        if (c % 2 == 0) {
+            c = c / 2
+        } else {
+            c = 3 * c + 1
+        }
+
+    }
+    ciagCol.add(1)
+    return ciagCol
+}
 
 
 fun main() {
@@ -214,6 +234,19 @@ fun main() {
     } catch (e: Exception) {
         println("${e.message}")
     }
-    }
+
+    //Zadanie 5
+
+
+    val c0 = 4
+    val ciag = collatz(c0)
+    println("Ciag Collatza dla c0 = $c0: $ciag")
+
+    val maksymalnaWartosc = ciag.maxOrNull() ?: 0
+    println("Maksymalna wartosc w ciagu = $maksymalnaWartosc")
+
+    val dlugosc = ciag.size
+    println("Dlugosc ciagu przed wpadnieciem w cykl = $dlugosc")
+}
 
 
