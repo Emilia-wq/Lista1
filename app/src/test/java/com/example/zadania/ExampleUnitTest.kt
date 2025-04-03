@@ -1,6 +1,8 @@
 package com.example.zadania
 
 import Heron
+import ciagFibonacci
+import ciagFibonacciego2
 import wspolne
 import org.junit.Test
 
@@ -91,7 +93,7 @@ class ExampleUnitTest {
         val czescWspolna1 = wspolne(multiZbiorX1, multiZbiorY1)
 
         //then
-        assertEquals(listOf(1,3,5,7),czescWspolna1)
+        assertEquals(listOf(1, 3, 5, 7), czescWspolna1)
     }
 
     //Zadanie 3
@@ -105,6 +107,86 @@ class ExampleUnitTest {
         val podzbioryWynik = podzbiory(zbior1)
 
         //then
-        assertEquals(6,podzbioryWynik.size)
+        assertEquals(6, podzbioryWynik.size)
     }
+
+    //Zadanie 4
+    //a)
+    @Test
+    fun ciagFiboCorrect() {
+
+        //when
+        val ciagFibonacci1 = ciagFibonacci(6)
+
+        //then
+        assertEquals(listOf(0, 1, 1, 2, 3, 5), ciagFibonacci1)
+    }
+
+    @Test
+    fun ciagFiboinCorrect1() {
+
+
+        //when
+        try {
+            val ciagFibonacci1 = ciagFibonacci(0)
+            //then
+            assertEquals(1, 2) //Zawsze fail
+
+        } catch (e: Exception) {
+            assertEquals(1, 1) //Test przeszedł
+        }
+    }
+
+    @Test
+    fun ciagFiboinCorrect2() {
+
+        //when
+        try {
+            val ciagFibonacci1 = ciagFibonacci(-23)
+            //then
+            assertEquals(1, 2) //Zawsze fail
+
+        } catch (e: Exception) {
+            assertEquals(1, 1) //Test przeszedł
+        }
+    }
+//b
+@Test
+fun ciagFiboCorrectrek() {
+
+    //when
+    val ciagFibonacci1 = ciagFibonacciego2(6)
+
+    //then
+    assertEquals(listOf(0, 1, 1, 2, 3, 5), ciagFibonacci1)
+}
+
+    @Test
+    fun ciagFiboinCorrect1rek() {
+
+        //when
+        try {
+            val ciagFibonacci1 = ciagFibonacciego2(0)
+            //then
+            assertEquals(1, 2) //Zawsze fail
+
+        } catch (e: Exception) {
+            assertEquals(1, 1) //Test przeszedł
+        }
+    }
+
+    @Test
+    fun ciagFiboinCorrect2rek() {
+
+        //when
+        try {
+            val ciagFibonacci1 = ciagFibonacciego2(-23)
+            //then
+            assertEquals(1, 2) //Zawsze fail
+
+        } catch (e: Exception) {
+            assertEquals(1, 1) //Test przeszedł
+        }
+    }
+    
 }

@@ -52,6 +52,53 @@ fun podzbiory(n: List<Int>) :ArrayList<List<Int>> {
 
 //Zadanie 4
 
+//a
+
+fun ciagFibonacci (n : Int): List<Int>{
+    if (n <= 0){
+        throw Exception ("Liczba elementow n musi byc > 0")
+    }
+    var pierwszaLiczba = 0
+    val listaFib = mutableListOf(pierwszaLiczba)
+
+    var drugaLiczba = 1
+    listaFib.add(drugaLiczba)
+
+    for(i in 1 .. n-2){
+        val nastepneLiczby = pierwszaLiczba + drugaLiczba
+
+        listaFib.add(nastepneLiczby)
+
+        pierwszaLiczba = drugaLiczba
+        drugaLiczba = nastepneLiczby
+    }
+    return listaFib
+}
+
+//b
+
+fun ciagFibonacciego (n :Int): Int{
+    if (n == 0){
+        return 0
+    }
+    else if (n == 1){
+        return 1
+    }
+    else{
+        return ciagFibonacciego(n - 1) + ciagFibonacciego(n - 2)
+    }
+}
+fun ciagFibonacciego2 (n:Int): List<Int>{
+    if (n <= 0){
+        throw Exception ("Liczba elementow n musi byc > 0")
+    }
+    var wynik = ArrayList<Int>()
+    for (i in 0..n-1){
+        wynik.add(ciagFibonacciego(i))
+    }
+    return wynik
+}
+
 
 
 fun main() {
@@ -130,8 +177,43 @@ fun main() {
     val zbior1 = listOf(1, 2, 3)
     val podzbioryWynik = podzbiory(zbior1)
     println("Wynik dla podzbiorow = $podzbioryWynik")
-}
 
 
+//Zadanie 4
+
+//a)
+    val ciagFibonacci1 = ciagFibonacci(6)
+    println("$ciagFibonacci1")
+
+    try {
+        ciagFibonacci(0)
+    } catch (e: Exception) {
+        println("${e.message}")
+    }
+
+    try {
+        ciagFibonacci(-23)
+    } catch (e: Exception) {
+        println("${e.message}")
+    }
+
+
+    //b)
+
+    val ciagFibonacciego2 = ciagFibonacciego2(8)
+    println("$ciagFibonacciego2")
+
+    try {
+        ciagFibonacciego2(0)
+    } catch (e: Exception) {
+        println("${e.message}")
+    }
+
+    try {
+        ciagFibonacciego2(-23)
+    } catch (e: Exception) {
+        println("${e.message}")
+    }
+    }
 
 
