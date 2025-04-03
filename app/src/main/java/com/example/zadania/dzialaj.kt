@@ -70,5 +70,6 @@ fun main (){
     }
     catch (e: Exception){
         println("Wystapil blad $e")
+        
     }
 }
